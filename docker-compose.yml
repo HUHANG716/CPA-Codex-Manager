@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8000
+      - APP_DATABASE_URL=data/database.db
+      - APP_ACCESS_PASSWORD=cpa2026admin
+    volumes:
+      - cpa-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  cpa-data:
